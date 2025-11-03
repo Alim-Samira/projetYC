@@ -15,10 +15,12 @@ int main() {
     // Game loop
     while (1) {
         // Get user input
-        if (scanf("%d", &guess) != 1) {
+        int input_status = scanf("%d", &guess);
+
+        if (input_status != 1) {
             // Handle invalid input
             printf("Please enter a valid number.\n");
-            while(getchar() != '\n'); // Clear the buffer
+            while (getchar() != '\n'); // Clear the buffer (discard invalid input)
             continue;  // Prompt user for input again
         }
 
@@ -31,6 +33,8 @@ int main() {
             printf("Correct! You've guessed the number!\n");
             break;  // Exit the loop when the correct number is guessed
         }
+
+        printf("Guess again: ");  // Prompt for next guess after feedback
     }
 
     return 0;  // Return 0 to indicate successful completion
