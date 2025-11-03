@@ -1,41 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
 int main() {
-    int number_to_guess = 4;  // Secret number to guess
-    int guess;
+    int nb_secret = 32;  // Secret number to guess
+    int nb_user;         // Variable to store the user's guess
 
-    // Seed the random number generator (if you were to generate random numbers)
-    // srand(time(0));
-
-    printf("Welcome to the Guessing Game!\n");
-    printf("Guess the secret number between 1 and 10: ");
+    // Prompt the user for their guess
+    printf("Bienvenue dans le jeu de devinette!\n");
+    printf("Devinez le nombre secret entre 1 et 100: ");
     
-    // Game loop
-    while (1) {
-        // Get user input
-        int input_status = scanf("%d", &guess);
-
-        if (input_status != 1) {
-            // Handle invalid input
-            printf("Please enter a valid number.\n");
-            while (getchar() != '\n'); // Clear the buffer (discard invalid input)
-            continue;  // Prompt user for input again
-        }
-
-        // Compare the guess to the secret number
-        if (guess < number_to_guess) {
-            printf("Too low, try again!\n");
-        } else if (guess > number_to_guess) {
-            printf("Too high, try again!\n");
-        } else {
-            printf("Correct! You've guessed the number!\n");
-            break;  // Exit the loop when the correct number is guessed
-        }
-
-        printf("Guess again: ");  // Prompt for next guess after feedback
+    // Read user input
+    scanf("%d", &nb_user);
+    
+    // Compare the user's guess with the secret number
+    if (nb_user == nb_secret) {
+        printf("Succès! Vous avez deviné le nombre secret!\n");
+    } else if (nb_user < nb_secret) {
+        printf("Votre supposition est trop faible. Essayez un plus grand nombre.\n");
+    } else {
+        printf("Votre supposition est trop élevée. Essayez un plus petit nombre.\n");
     }
 
-    return 0;  // Return 0 to indicate successful completion
+    return 0;  // Return 0 to indicate successful execution
 }
